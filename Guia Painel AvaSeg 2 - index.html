@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>AvaSeg - Orientações do Sistema de Gestão</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    header { text-align: center; margin-bottom: 40px; border-bottom: 2px solid #ddd; padding-bottom: 20px; }
+    .logo-text { font-size: 2rem; font-weight: 800; color: #2f6fed; }
+    .logo-text span { color: #fbbd08; }
+
+    h1 { margin-bottom: 10px; font-size: 1.8rem; }
+    h2 { margin-top: 40px; color: #2f6fed; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+    
+    .dashboard-notice {
+      background: #eef2ff;
+      color: #4338ca;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: 40px;
+      display: inline-block;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      border: 1px solid #ddd;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      border-color: #2f6fed;
+    }
+
+    .card-title { font-weight: bold; margin-bottom: 5px; font-size: 1.1rem; }
+    .card-desc { color: #666; font-size: 14px; }
+    
+    .project-box {
+      background: #f9fafb;
+      border-left: 4px solid #10b981;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 4px;
+    }
+
+    .welcome-text-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .welcome-main-text {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 8px;
+    }
+    .welcome-sub-text {
+      font-size: 18px;
+      color: #4b5563;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(3px);
+      justify-content: center; align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .modal-title { font-size: 1.4rem; font-weight: 700; color: #2f6fed; margin-bottom: 15px; }
+    .modal-text { line-height: 1.6; color: #444; }
+
+    .close {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: #2f6fed;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .login-preview {
+      margin-top: 15px;
+      background: url('https://images.unsplash.com/photo-1558444479-c8a81e236069?q=80&w=1000') center/cover;
+      height: 180px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .login-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      border-radius: 8px;
+    }
+    .login-form-sim {
+      position: relative;
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      width: 140px;
+      text-align: center;
+      font-size: 10px;
+      z-index: 1;
+    }
+    .login-input { border: 1px solid #ddd; margin: 4px 0; height: 12px; border-radius: 2px; }
+    .login-btn { background: #2f6fed; color: white; border: none; padding: 4px; border-radius: 2px; width: 100%; margin-top: 4px;}
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="logo-text">Ava<span>Seg</span></div>
+    <h1>Orientações do Sistema de Gestão</h1>
+    <p>Clique em um card para visualizar as instruções de cada etapa.</p>
+  </header>
+
+  <h2><i data-lucide="log-in"></i> Tela de Login</h2>
+  <div class="grid">
+    <div class="card" onclick="abrirModal('Acesse sua conta', 'Nesta tela, utilize seu e-mail e senha corporativos para acessar o sistema de Gestão de Terceiros.')">
+      <div class="card-title">Acesse sua conta</div>
+      <div class="login-preview">
+        <div class="login-overlay"></div>
+        <div class="login-form-sim">
+          <div style="font-weight:bold; color:#2f6fed; margin-bottom:5px;">AvaSeg</div>
+          <div style="font-size:8px; margin-bottom:5px;">Acesse sua conta</div>
+          <div class="login-input"></div>
+          <div class="login-input"></div>
+          <div class="login-btn">Entrar</div>
+        </div>
+      </div>
+      <div class="card-desc" style="margin-top:10px;">Clique para orientações de acesso.</div>
+    </div>
+  </div>
+
+  <h2><i data-lucide="list"></i> Seleção de Projeto</h2>
+  <div class="grid">
+    <div class="card" onclick="abrirModal('Seleção de Projeto', 'Nesta etapa, selecione o projeto para o qual deseja acessar.')">
+      <div class="welcome-text-container">
+        <div class="welcome-main-text">Seja bem vindo(a) ao sistema de gerenciamento!</div>
+        <div class="welcome-sub-text">Por favor, selecione o Projeto:</div>
+      </div>
+      <div class="card-title">Escolha do Projeto</div>
+      <div class="project-box">
+        <small>Exemplo:</small><br>
+        <strong>Parque Solar Alpha</strong><br>
+        <span style="font-size: 12px; color: #666;">Cliente: TechEnergia S.A.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-notice">
+    <i data-lucide="layout-dashboard" style="display:inline-block; vertical-align:middle; width:16px;"></i>
+    Orientações da Tela de Painel (Dashboard)
+  </div>
+
+  <h2><i data-lucide="users"></i> Funcionários</h2>
+  <div class="grid">
+    <div class="card" onclick="abrirModal('Funcionários Ativos', 'Representa os funcionários com cadastro completo e dossiê aprovado.')">
+      <div class="card-title">Funcionários Ativos</div>
+      <div class="card-desc">Funcionários liberados para trabalho</div>
+    </div>
+    <div class="card" onclick="abrirModal('Funcionários Inativos', 'Representa funcionários que não estão liberados para atuação, devido status inativo.')">
+      <div class="card-title">Funcionários Inativos</div>
+      <div class="card-desc">Funcionários não liberados</div>
+    </div>
+    <div class="card" onclick="abrirModal('Funcionários Pendentes', 'Funcionários cujo dossiê ainda não foi enviado.')">
+      <div class="card-title">Funcionários Pendentes</div>
+      <div class="card-desc">Dossiê ainda não enviado</div>
+    </div>
+    <div class="card" onclick="abrirModal('Doc./Treinamentos Próximo do Vencimento', 'Indica documentos ou treinamentos que estão próximos do vencimento.')">
+      <div class="card-title">Doc./Treinamentos Próximo do Vencimento</div>
+      <div class="card-desc">Requer atualização</div>
+    </div>
+    <div class="card" onclick="abrirModal('Dossiês em Análise', 'Representa dossiês que estão aguardando validação.')">
+      <div class="card-title">Dossiês em Análise</div>
+      <div class="card-desc">Aguardando verificação</div>
+    </div>
+    <div class="card" onclick="abrirModal('Dossiês Reprovados', 'Representa dossiês que foram reprovados e necessitam correção.')">
+      <div class="card-title">Dossiês Reprovados</div>
+      <div class="card-desc">Necessitam correção</div>
+    </div>
+  </div>
+
+  <h2><i data-lucide="truck"></i> Veículos</h2>
+  <div class="grid">
+    <div class="card" onclick="abrirModal('Veículos Ativos', 'Representa veículos com dossiê aprovado.')">
+      <div class="card-title">Veículos Ativos</div>
+    </div>
+    <div class="card" onclick="abrirModal('Veículos Inativos', 'Representa veículos que não estão liberados para acessar ao projeto.')">
+      <div class="card-title">Veículos Inativos</div>
+    </div>
+  </div>
+
+  <h2><i data-lucide="briefcase"></i> Fornecedores</h2>
+  <div class="grid">
+    <div class="card" onclick="abrirModal('Fornecedor Doc. próximo do vencimento', 'Indica documentos da empresa fornecedora que estão próximos da data de expiração.')">
+      <div class="card-title">Fornecedor Doc. próximo do vencimento</div>
+      <div class="card-desc">Requer atenção imediata</div>
+    </div>
+    <div class="card" onclick="abrirModal('Fornecedor Doc. Vencido', 'Representa documentos da empresa fornecedora que já expiraram e precisam ser renovados.')">
+      <div class="card-title">Fornecedor Doc. Vencido</div>
+      <div class="card-desc">Necessário regularização</div>
+    </div>
+  </div>
+
+  <h2><i data-lucide="settings"></i> Recursos do Painel</h2>
+  <div class="grid">
+    <div class="card" onclick="abrirModal('Reprovar Vencidos', 'Este botão permite reprovar automaticamente documentos expirados.')">
+      <div class="card-title">Reprovar Vencidos</div>
+      <div class="card-desc">Atualiza status de documentos vencidos</div>
+    </div>
+    <div class="card" onclick="abrirModal('Trocar Projeto', 'Permite alternar entre differentes projetos vinculados.')">
+      <div class="card-title">Trocar Projeto</div>
+      <div class="card-desc">Alternar entre projetos</div>
+    </div>
+  </div>
+
+</div>
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <div id="modal-title" class="modal-title"></div>
+    <div id="modal-text" class="modal-text"></div>
+    <button class="close" onclick="fecharModal()">Fechar Orientação</button>
+  </div>
+</div>
+
+<script>
+  lucide.createIcons();
+
+  function abrirModal(titulo, texto) {
+    document.getElementById('modal-title').innerText = titulo;
+    document.getElementById('modal-text').innerText = texto;
+    document.getElementById('modal').style.display = 'flex';
+  }
+
+  function fecharModal() {
+    document.getElementById('modal').style.display = 'none';
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById('modal');
+    if (event.target == modal) fecharModal();
+  }
+</script>
+
+</body>
+</html>
